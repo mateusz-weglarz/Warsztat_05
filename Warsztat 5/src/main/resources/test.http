@@ -1,0 +1,36 @@
+GET http://localhost:8080/books
+
+###
+
+GET http://localhost:8080/books/3
+
+###
+
+DELETE http://localhost:8080/books/3
+
+###
+
+GET http://localhost:8080/books/3
+
+###
+
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title" : "Quo vadis",
+  "isbn" : "000000000",
+  "author" : "Henryk"
+}
+
+###
+
+PUT http://localhost:8080/books/2
+Content-Type: application/json
+
+{
+  "title" : "Dyzma",
+  "author" : "Pumpkin"
+}
+
+###
