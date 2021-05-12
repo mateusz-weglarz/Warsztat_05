@@ -1,12 +1,28 @@
 package pl.coderslab.app;
 
+import org.hibernate.validator.constraints.ISBN;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ISBN
     private String isbn;
+    @NotBlank
+    @Size(min=5,max=100)
     private String title;
+    @NotBlank
     private String author;
     private String publisher;
     private String type;
+
+
 
     public Book(Long id, String isbn, String title, String author, String publisher, String type) {
         this.id = id;

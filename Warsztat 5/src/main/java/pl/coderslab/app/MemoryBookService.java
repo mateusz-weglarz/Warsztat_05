@@ -2,18 +2,15 @@ package pl.coderslab.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import pl.coderslab.exeptions.BadResourceExeption;
 import pl.coderslab.exeptions.ResourceNotFoundExeptions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
-@Primary
 public class MemoryBookService implements BookService {
 
     private final List<Book> list;
@@ -37,7 +34,7 @@ public class MemoryBookService implements BookService {
         return list;
     }
 
-    public Book getBookById(long id) {
+    public Book getBookById(Long id) {
         log.debug("Pobieranie książki o id: {}", id);
         Book book = list.stream()
                 .filter(b -> b.getId().equals(id))
@@ -61,7 +58,7 @@ public class MemoryBookService implements BookService {
     @Override
     public void updateBook(Book bookToUpdate) {
         log.debug("Aktualizacja książki.");
-        long id = bookToUpdate.getId();
+        Long id = bookToUpdate.getId();
         list.stream()
                 .filter(b -> b.getId().equals(id))
                 .map(list::indexOf)
@@ -73,7 +70,7 @@ public class MemoryBookService implements BookService {
 
     }
 
-    public void deleteBook(long id) {
+    public void deleteBook(Long id) {
         log.debug("Usuwam książkę to przekazanym id");
         log.debug("Liczba książek przed usunięciem: {}", list.size());
         list.stream()
