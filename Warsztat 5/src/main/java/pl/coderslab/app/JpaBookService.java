@@ -4,10 +4,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.repository.BookRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 @Primary
+@Transactional
 public class JpaBookService implements BookService {
 
     private final BookRepository bookRepository;
