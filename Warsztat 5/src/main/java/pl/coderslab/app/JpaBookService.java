@@ -4,12 +4,11 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.repository.BookRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Repository
+
 @Primary
-@Transactional
+@Repository
 public class JpaBookService implements BookService {
 
     private final BookRepository bookRepository;
@@ -20,7 +19,7 @@ public class JpaBookService implements BookService {
 
     @Override
     public Book getBookById(Long id) {
-        return bookRepository.getOne(id);
+        return bookRepository.readBookById(id);
     }
 
     @Override
